@@ -1,0 +1,20 @@
+# DataHub ingestion recipe — FinTrack Azure SQL
+# Usage: datahub ingest -c tools/datahub_recipe.yml
+
+source:
+  type: mssql
+  config:
+    host_port: "YOUR_SQL_SERVER.database.windows.net:1433"
+    username: sqladmin
+    password: "Password123!"
+    database: finance-db
+    include_tables: true
+    include_views: true
+    profiling:
+      enabled: false
+
+sink:
+  type: datahub-rest
+  config:
+    server: "http://localhost:8080"
+    token: ""
